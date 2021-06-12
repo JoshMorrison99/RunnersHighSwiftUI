@@ -6,12 +6,26 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct RunnersHighApp: App {
+    
+    init(){
+        setupAuthentication()
+    }
+    
+    var UserAuthState = UserViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RunnersHighView().environmentObject(UserAuthState).onAppear(){UserAuthState.configureFirebaseStateDidChange()}
         }
+    }
+}
+
+extension RunnersHighApp {
+    private func setupAuthentication(){
+        FirebaseApp.configure()
     }
 }
