@@ -10,8 +10,13 @@ import SwiftUI
 import FirebaseAuth
 
 class SignUpViewModel: ObservableObject{
+    @EnvironmentObject var UserAuthState: UserViewModel
     
-    @Published var AuthRepo = AuthRepository()
+    private let AuthRepo: AuthRepositoryProtocol
+    
+    init(AuthRepo: AuthRepositoryProtocol = AuthRepository()){
+        self.AuthRepo = AuthRepo
+    }
     
     @Published var usernameError = ""
     @Published var emailError = ""
@@ -62,9 +67,9 @@ class SignUpViewModel: ObservableObject{
                         print("error \(error.localizedDescription)")
                     case .success(_):
                         print("Account Created")
+                        print(newUser.id)
                 }
             }
         }
-        
     }
 }

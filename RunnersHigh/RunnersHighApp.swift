@@ -12,7 +12,7 @@ import Firebase
 struct RunnersHighApp: App {
     
     init(){
-        setupAuthentication()
+        FirebaseApp.configure()
     }
     
     var UserAuthState = UserViewModel()
@@ -21,11 +21,5 @@ struct RunnersHighApp: App {
         WindowGroup {
             RunnersHighView().environmentObject(UserAuthState).onAppear(){UserAuthState.configureFirebaseStateDidChange()}
         }
-    }
-}
-
-extension RunnersHighApp {
-    private func setupAuthentication(){
-        FirebaseApp.configure()
     }
 }

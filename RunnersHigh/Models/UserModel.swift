@@ -8,8 +8,9 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct UserModel: Identifiable, Encodable {
+struct UserModel: Identifiable, Encodable, Decodable {
     @DocumentID var id: String? = UUID().uuidString
     let username: String
     let email: String
+    
 }
