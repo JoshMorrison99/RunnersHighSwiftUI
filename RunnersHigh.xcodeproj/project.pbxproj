@@ -24,6 +24,9 @@
 		E774A7A2266FFEA6007434E2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774A7A1266FFEA6007434E2 /* SignUpView.swift */; };
 		E774A7A4266FFEF7007434E2 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774A7A3266FFEF7007434E2 /* SignUpViewModel.swift */; };
 		E774A7AC267277C1007434E2 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774A7AB267277C1007434E2 /* UserModel.swift */; };
+		E77CF2A52679120000C6FEC5 /* RunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77CF2A42679120000C6FEC5 /* RunView.swift */; };
+		E77CF2A72679130D00C6FEC5 /* RunViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77CF2A62679130D00C6FEC5 /* RunViewModel.swift */; };
+		E77CF2A92679169700C6FEC5 /* RunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77CF2A82679169700C6FEC5 /* RunModel.swift */; };
 		E7920165266C593C006150C6 /* RunnersHighApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7920164266C593C006150C6 /* RunnersHighApp.swift */; };
 		E7920167266C593C006150C6 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7920166266C593C006150C6 /* WelcomeView.swift */; };
 		E7920169266C5941006150C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7920168266C5941006150C6 /* Assets.xcassets */; };
@@ -81,6 +84,9 @@
 		E774A7A3266FFEF7007434E2 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E774A7AB267277C1007434E2 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		E774A7B1267284ED007434E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E77CF2A42679120000C6FEC5 /* RunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunView.swift; sourceTree = "<group>"; };
+		E77CF2A62679130D00C6FEC5 /* RunViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunViewModel.swift; sourceTree = "<group>"; };
+		E77CF2A82679169700C6FEC5 /* RunModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunModel.swift; sourceTree = "<group>"; };
 		E7920161266C593C006150C6 /* RunnersHigh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunnersHigh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7920164266C593C006150C6 /* RunnersHighApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnersHighApp.swift; sourceTree = "<group>"; };
 		E7920166266C593C006150C6 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -159,6 +165,7 @@
 				E7C22C5F2676843400D66E66 /* HomeView.swift */,
 				E746DCEA2676C11300CCC34D /* RaceView.swift */,
 				E746DCEC2676C12800CCC34D /* ProfileView.swift */,
+				E77CF2A42679120000C6FEC5 /* RunView.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -187,6 +194,7 @@
 				E7C22C5D267682DE00D66E66 /* AuthViewModels */,
 				E774A79D266FFA84007434E2 /* UserViewModel.swift */,
 				E746DCFA2677B6AA00CCC34D /* RaceListViewModel.swift */,
+				E77CF2A62679130D00C6FEC5 /* RunViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -196,6 +204,7 @@
 			children = (
 				E774A7AB267277C1007434E2 /* UserModel.swift */,
 				E746DCF22676D04100CCC34D /* RaceModel.swift */,
+				E77CF2A82679169700C6FEC5 /* RunModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -549,8 +558,10 @@
 				E7C22C602676843400D66E66 /* HomeView.swift in Sources */,
 				E774A7A4266FFEF7007434E2 /* SignUpViewModel.swift in Sources */,
 				E7EDB6F32674369100F6ED05 /* FBKeys.swift in Sources */,
+				E77CF2A52679120000C6FEC5 /* RunView.swift in Sources */,
 				E746DCFB2677B6AA00CCC34D /* RaceListViewModel.swift in Sources */,
 				E774A7A0266FFD30007434E2 /* LoginViewModel.swift in Sources */,
+				E77CF2A72679130D00C6FEC5 /* RunViewModel.swift in Sources */,
 				E774A7A2266FFEA6007434E2 /* SignUpView.swift in Sources */,
 				E746DCED2676C12800CCC34D /* ProfileView.swift in Sources */,
 				E746DCF52676D56400CCC34D /* TypeFormatter.swift in Sources */,
@@ -561,6 +572,7 @@
 				E774A79E266FFA84007434E2 /* UserViewModel.swift in Sources */,
 				E7BA5F5E2674062B004A9F7C /* ValidationChecker.swift in Sources */,
 				E7920165266C593C006150C6 /* RunnersHighApp.swift in Sources */,
+				E77CF2A92679169700C6FEC5 /* RunModel.swift in Sources */,
 				E746DCF12676CFDC00CCC34D /* RaceCard.swift in Sources */,
 				E746DCF92677B49F00CCC34D /* RaceRepository.swift in Sources */,
 				E774A7AC267277C1007434E2 /* UserModel.swift in Sources */,

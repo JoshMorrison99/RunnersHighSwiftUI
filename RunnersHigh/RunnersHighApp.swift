@@ -17,9 +17,10 @@ struct RunnersHighApp: App {
     
     var UserAuthState = UserViewModel()
     var RaceVM = RaceListViewModel()
+    var RunVM = RunViewModel()
     var body: some Scene {
         WindowGroup {
-            RunnersHighView(RaceVM: RaceVM).environmentObject(UserAuthState).onAppear(){UserAuthState.configureFirebaseStateDidChange()}
+            RunnersHighView(RunVM: RunVM, RaceVM: RaceVM).environmentObject(UserAuthState).onAppear(){UserAuthState.configureFirebaseStateDidChange()}
         }
     }
 }

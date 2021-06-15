@@ -11,6 +11,10 @@ import FirebaseFirestoreSwift
 
 class RaceRepository {
     
+    enum MyError: Error{
+        case noDocument
+    }
+    
     func GetRace(RaceID: String?, completion: @escaping (Result<RaceModel, Error>) -> Void){
         print("GetRaceInformation")
         let ref = Firestore.firestore().collection(FBKeys.FBCollections.races).document(RaceID!)
@@ -19,7 +23,7 @@ class RaceRepository {
                 let race = try? document.data(as: RaceModel.self)
                 completion(.success(race!))
             }else{
-                completion(.failure(error!))
+                completion(.failure(MyError.noDocument))
             }
         }
     }
@@ -28,7 +32,13 @@ class RaceRepository {
         print("AddCompetitorToRace")
         print(user.id!)
         print(race.id)
-        print(race.id)
+        
         try? Firestore.firestore().collection(FBKeys.FBCollections.races).document(race.id!).setData(from: race)
     }
+    
+    func AddRace(race: RaceModel){
+        try? Firestore.firestore().collection(FBKeys.FBCollections.races).document(race.id!).setData(from: race)
+    }
+    
+    
 }

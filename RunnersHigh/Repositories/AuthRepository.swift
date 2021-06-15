@@ -13,16 +13,15 @@ import FirebaseFirestoreSwift
 protocol AuthRepositoryProtocol {
     func CreateUser(username: String, email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void)
     func GetUser(uid: String?, completion: @escaping (Result<UserModel, Error>) -> Void)
-    func AddUser(uid: String, username: String, email: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    func AddUser(id: String, documentID: String, username: String, email: String, completion: @escaping (Result<Bool, Error>) -> Void)
 }
 
 
 class AuthRepository: AuthRepositoryProtocol {
     
-    func AddUser(uid: String, username: String, email: String, completion: @escaping (Result<Bool, Error>) -> Void){
-        print("ENTER")
-        let newUser = UserModel(id: uid, username: username, email: email)
-        let ref = Firestore.firestore().collection(FBKeys.FBCollections.users).document(newUser.id!)
+    func AddUser(id: String, documentID: String, username: String, email: String, completion: @escaping (Result<Bool, Error>) -> Void){
+        let newUser = UserModel(documentID: documentID, id: id, username: username, email: email)
+        let ref = Firestore.firestore().collection(FBKeys.FBCollections.users).document(newUser.documentID!)
         do{
             try ref.setData(from: newUser, merge: true){ (err) in
                 if let err = err {
@@ -52,14 +51,11 @@ class AuthRepository: AuthRepositoryProtocol {
                     completion(.failure(error!))
                     return
                 }
-                print("authResult?.user.uid --> \(authResult?.user.uid)")
-                self.AddUser(uid: (authResult?.user.uid)!, username: username, email: email) { (result) in
-                    
+                
+                self.AddUser(id: (authResult?.user.uid)!, documentID: (authResult?.user.uid)!, username: username, email: email) { (result) in
+                    print(result)
                 }
             }
-        
-        }catch{
-            completion(.failure(error))
         }
     }
     

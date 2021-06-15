@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RaceView: View {
     @ObservedObject var RaceVM: RaceListViewModel
+    @ObservedObject var RunVM: RunViewModel
     var body: some View {
         VStack{
             ScrollView{
@@ -18,10 +19,17 @@ struct RaceView: View {
             }.onAppear(){
                 RaceVM.SetRaceList()
                 print("Race list count is \(RaceVM.raceList.count)")
+            }.onDisappear(){
+                RaceVM.raceList = []
             }
-            Button("Solo"){
-                
+            Button("Solo Run"){
+                RunVM.RunState = .running
             }
+            .frame(width: 100, height: 100)
+            .foregroundColor(Color.black)
+            .background(Color.red)
+            .clipShape(Circle())
+            .padding()
         }
         
     }

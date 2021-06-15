@@ -9,8 +9,9 @@ import Foundation
 import FirebaseFirestoreSwift
 
 struct UserModel: Identifiable, Encodable, Decodable {
-    @DocumentID var id: String?
+    @DocumentID var documentID: String?
+    var id: String?
     let username: String
     let email: String
-    
+    var runs: [RunModel] = []
 }
