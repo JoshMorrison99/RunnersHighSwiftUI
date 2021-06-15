@@ -10,6 +10,14 @@
 		05E51F10E6989FA36B26A54B /* Pods_RunnersHighTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCD04D4AFC3702353ECA5AB /* Pods_RunnersHighTests.framework */; };
 		0819030D9C26EAFB5232836D /* Pods_RunnersHigh_RunnersHighUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B8A7B7B53F3F1A88E5FE8D /* Pods_RunnersHigh_RunnersHighUITests.framework */; };
 		29A14D033B5CFDE24CA47F43 /* Pods_RunnersHigh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18782DBE0A567C1EE5F6E376 /* Pods_RunnersHigh.framework */; };
+		E746DCEB2676C11300CCC34D /* RaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746DCEA2676C11300CCC34D /* RaceView.swift */; };
+		E746DCED2676C12800CCC34D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746DCEC2676C12800CCC34D /* ProfileView.swift */; };
+		E746DCF12676CFDC00CCC34D /* RaceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746DCF02676CFDC00CCC34D /* RaceCard.swift */; };
+		E746DCF32676D04100CCC34D /* RaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746DCF22676D04100CCC34D /* RaceModel.swift */; };
+		E746DCF52676D56400CCC34D /* TypeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746DCF42676D56400CCC34D /* TypeFormatter.swift */; };
+		E746DCF72676DA9000CCC34D /* TypeFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746DCF62676DA9000CCC34D /* TypeFormatterTests.swift */; };
+		E746DCF92677B49F00CCC34D /* RaceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746DCF82677B49F00CCC34D /* RaceRepository.swift */; };
+		E746DCFB2677B6AA00CCC34D /* RaceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746DCFA2677B6AA00CCC34D /* RaceListViewModel.swift */; };
 		E774A798266FEFC8007434E2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774A797266FEFC8007434E2 /* LoginView.swift */; };
 		E774A79E266FFA84007434E2 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774A79D266FFA84007434E2 /* UserViewModel.swift */; };
 		E774A7A0266FFD30007434E2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774A79F266FFD30007434E2 /* LoginViewModel.swift */; };
@@ -24,8 +32,11 @@
 		E7920182266C5942006150C6 /* RunnersHighUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7920181266C5942006150C6 /* RunnersHighUITests.swift */; };
 		E7BA5F562672A9E3004A9F7C /* RunnersHighView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BA5F552672A9E3004A9F7C /* RunnersHighView.swift */; };
 		E7BA5F5E2674062B004A9F7C /* ValidationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BA5F5D2674062B004A9F7C /* ValidationChecker.swift */; };
+		E7C22C602676843400D66E66 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C22C5F2676843400D66E66 /* HomeView.swift */; };
 		E7EDB6F12674358B00F6ED05 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EDB6F02674358B00F6ED05 /* AuthRepository.swift */; };
 		E7EDB6F32674369100F6ED05 /* FBKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EDB6F22674369100F6ED05 /* FBKeys.swift */; };
+		E7EDB6F5267569B100F6ED05 /* AuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EDB6F4267569B100F6ED05 /* AuthTests.swift */; };
+		E7EDB6F726756A8D00F6ED05 /* MockAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EDB6F626756A8D00F6ED05 /* MockAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +66,17 @@
 		8B85E70059FEE49410462913 /* Pods-RunnersHigh-RunnersHighUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnersHigh-RunnersHighUITests.debug.xcconfig"; path = "Target Support Files/Pods-RunnersHigh-RunnersHighUITests/Pods-RunnersHigh-RunnersHighUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C6B8A7B7B53F3F1A88E5FE8D /* Pods_RunnersHigh_RunnersHighUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnersHigh_RunnersHighUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCD04D4AFC3702353ECA5AB /* Pods_RunnersHighTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnersHighTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E746DCEA2676C11300CCC34D /* RaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceView.swift; sourceTree = "<group>"; };
+		E746DCEC2676C12800CCC34D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E746DCF02676CFDC00CCC34D /* RaceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceCard.swift; sourceTree = "<group>"; };
+		E746DCF22676D04100CCC34D /* RaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceModel.swift; sourceTree = "<group>"; };
+		E746DCF42676D56400CCC34D /* TypeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFormatter.swift; sourceTree = "<group>"; };
+		E746DCF62676DA9000CCC34D /* TypeFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFormatterTests.swift; sourceTree = "<group>"; };
+		E746DCF82677B49F00CCC34D /* RaceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceRepository.swift; sourceTree = "<group>"; };
+		E746DCFA2677B6AA00CCC34D /* RaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceListViewModel.swift; sourceTree = "<group>"; };
 		E774A797266FEFC8007434E2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E774A79D266FFA84007434E2 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
-		E774A79F266FFD30007434E2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E774A79F266FFD30007434E2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = "../New Group/LoginViewModel.swift"; sourceTree = "<group>"; };
 		E774A7A1266FFEA6007434E2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		E774A7A3266FFEF7007434E2 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E774A7AB267277C1007434E2 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -76,8 +95,11 @@
 		E7920183266C5942006150C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7BA5F552672A9E3004A9F7C /* RunnersHighView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnersHighView.swift; sourceTree = "<group>"; };
 		E7BA5F5D2674062B004A9F7C /* ValidationChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ValidationChecker.swift; path = RunnersHigh/ValidationChecker.swift; sourceTree = SOURCE_ROOT; };
+		E7C22C5F2676843400D66E66 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E7EDB6F02674358B00F6ED05 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		E7EDB6F22674369100F6ED05 /* FBKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBKeys.swift; sourceTree = "<group>"; };
+		E7EDB6F4267569B100F6ED05 /* AuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTests.swift; sourceTree = "<group>"; };
+		E7EDB6F626756A8D00F6ED05 /* MockAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,12 +153,30 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E746DCEE2676CFB900CCC34D /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				E7C22C5F2676843400D66E66 /* HomeView.swift */,
+				E746DCEA2676C11300CCC34D /* RaceView.swift */,
+				E746DCEC2676C12800CCC34D /* ProfileView.swift */,
+			);
+			path = MainViews;
+			sourceTree = "<group>";
+		};
+		E746DCEF2676CFC600CCC34D /* HelperViews */ = {
+			isa = PBXGroup;
+			children = (
+				E746DCF02676CFDC00CCC34D /* RaceCard.swift */,
+			);
+			path = HelperViews;
+			sourceTree = "<group>";
+		};
 		E774A799266FEFE6007434E2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E774A797266FEFC8007434E2 /* LoginView.swift */,
-				E7920166266C593C006150C6 /* WelcomeView.swift */,
-				E774A7A1266FFEA6007434E2 /* SignUpView.swift */,
+				E746DCEF2676CFC600CCC34D /* HelperViews */,
+				E746DCEE2676CFB900CCC34D /* MainViews */,
+				E7C22C5E2676830200D66E66 /* AuthViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -144,9 +184,9 @@
 		E774A79A266FF0BB007434E2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E7C22C5D267682DE00D66E66 /* AuthViewModels */,
 				E774A79D266FFA84007434E2 /* UserViewModel.swift */,
-				E774A79F266FFD30007434E2 /* LoginViewModel.swift */,
-				E774A7A3266FFEF7007434E2 /* SignUpViewModel.swift */,
+				E746DCFA2677B6AA00CCC34D /* RaceListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -155,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				E774A7AB267277C1007434E2 /* UserModel.swift */,
+				E746DCF22676D04100CCC34D /* RaceModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -212,6 +253,9 @@
 			children = (
 				E7920176266C5942006150C6 /* RunnersHighTests.swift */,
 				E7920178266C5942006150C6 /* Info.plist */,
+				E7EDB6F4267569B100F6ED05 /* AuthTests.swift */,
+				E7EDB6F626756A8D00F6ED05 /* MockAuth.swift */,
+				E746DCF62676DA9000CCC34D /* TypeFormatterTests.swift */,
 			);
 			path = RunnersHighTests;
 			sourceTree = "<group>";
@@ -229,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				E7EDB6F02674358B00F6ED05 /* AuthRepository.swift */,
+				E746DCF82677B49F00CCC34D /* RaceRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -238,8 +283,28 @@
 			children = (
 				E7BA5F5D2674062B004A9F7C /* ValidationChecker.swift */,
 				E7EDB6F22674369100F6ED05 /* FBKeys.swift */,
+				E746DCF42676D56400CCC34D /* TypeFormatter.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E7C22C5D267682DE00D66E66 /* AuthViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E774A79F266FFD30007434E2 /* LoginViewModel.swift */,
+				E774A7A3266FFEF7007434E2 /* SignUpViewModel.swift */,
+			);
+			path = AuthViewModels;
+			sourceTree = "<group>";
+		};
+		E7C22C5E2676830200D66E66 /* AuthViews */ = {
+			isa = PBXGroup;
+			children = (
+				E774A797266FEFC8007434E2 /* LoginView.swift */,
+				E7920166266C593C006150C6 /* WelcomeView.swift */,
+				E774A7A1266FFEA6007434E2 /* SignUpView.swift */,
+			);
+			path = AuthViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,15 +546,23 @@
 			files = (
 				E7BA5F562672A9E3004A9F7C /* RunnersHighView.swift in Sources */,
 				E774A798266FEFC8007434E2 /* LoginView.swift in Sources */,
+				E7C22C602676843400D66E66 /* HomeView.swift in Sources */,
 				E774A7A4266FFEF7007434E2 /* SignUpViewModel.swift in Sources */,
 				E7EDB6F32674369100F6ED05 /* FBKeys.swift in Sources */,
+				E746DCFB2677B6AA00CCC34D /* RaceListViewModel.swift in Sources */,
 				E774A7A0266FFD30007434E2 /* LoginViewModel.swift in Sources */,
 				E774A7A2266FFEA6007434E2 /* SignUpView.swift in Sources */,
+				E746DCED2676C12800CCC34D /* ProfileView.swift in Sources */,
+				E746DCF52676D56400CCC34D /* TypeFormatter.swift in Sources */,
+				E746DCF32676D04100CCC34D /* RaceModel.swift in Sources */,
 				E7EDB6F12674358B00F6ED05 /* AuthRepository.swift in Sources */,
 				E7920167266C593C006150C6 /* WelcomeView.swift in Sources */,
+				E746DCEB2676C11300CCC34D /* RaceView.swift in Sources */,
 				E774A79E266FFA84007434E2 /* UserViewModel.swift in Sources */,
 				E7BA5F5E2674062B004A9F7C /* ValidationChecker.swift in Sources */,
 				E7920165266C593C006150C6 /* RunnersHighApp.swift in Sources */,
+				E746DCF12676CFDC00CCC34D /* RaceCard.swift in Sources */,
+				E746DCF92677B49F00CCC34D /* RaceRepository.swift in Sources */,
 				E774A7AC267277C1007434E2 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,7 +571,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E746DCF72676DA9000CCC34D /* TypeFormatterTests.swift in Sources */,
 				E7920177266C5942006150C6 /* RunnersHighTests.swift in Sources */,
+				E7EDB6F726756A8D00F6ED05 /* MockAuth.swift in Sources */,
+				E7EDB6F5267569B100F6ED05 /* AuthTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

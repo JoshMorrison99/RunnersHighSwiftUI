@@ -9,21 +9,29 @@ import SwiftUI
 
 struct RunnersHighView: View {
     @EnvironmentObject var UserAuthState: UserViewModel
+    @ObservedObject var RaceVM: RaceListViewModel
     var body: some View {
         if(UserAuthState.isUserAuthenticated == .undefined){
-            Text("Loading...").onAppear(){UserAuthState.configureFirebaseStateDidChange()}
+            Text("Loading...")
         }else if(UserAuthState.isUserAuthenticated == .signedIn){
-            Text("Home").onAppear(){UserAuthState.configureFirebaseStateDidChange()}
+            TabView{
+                HomeView().environmentObject(UserAuthState)
+                    .tabItem{
+                        Label("Home", systemImage: "house")
+                    }
+                RaceView(RaceVM: RaceVM).environmentObject(UserAuthState)
+                    .tabItem{
+                        Label("Race", systemImage: "figure.walk")
+                    }
+                ProfileView().environmentObject(UserAuthState)
+                    .tabItem{
+                        Label("Profile", systemImage: "person")
+                    }
+            }
         }else if(UserAuthState.isUserAuthenticated == .signedOut){
-            WelcomeView().environmentObject(UserAuthState).onAppear(){UserAuthState.configureFirebaseStateDidChange()}
+            WelcomeView().environmentObject(UserAuthState)
         }else{
             Text("Error")
         }
-    }
-}
-
-struct RunnersHighView_Previews: PreviewProvider {
-    static var previews: some View {
-        RunnersHighView()
     }
 }

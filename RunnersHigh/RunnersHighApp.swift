@@ -12,20 +12,14 @@ import Firebase
 struct RunnersHighApp: App {
     
     init(){
-        setupAuthentication()
+        FirebaseApp.configure()
     }
     
     var UserAuthState = UserViewModel()
-    
+    var RaceVM = RaceListViewModel()
     var body: some Scene {
         WindowGroup {
-            RunnersHighView().environmentObject(UserAuthState).onAppear(){UserAuthState.configureFirebaseStateDidChange()}
+            RunnersHighView(RaceVM: RaceVM).environmentObject(UserAuthState).onAppear(){UserAuthState.configureFirebaseStateDidChange()}
         }
-    }
-}
-
-extension RunnersHighApp {
-    private func setupAuthentication(){
-        FirebaseApp.configure()
     }
 }
