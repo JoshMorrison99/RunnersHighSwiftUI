@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct RaceView: View {
+    @ObservedObject var RaceVM: RaceListViewModel
     var body: some View {
-        RaceCard(distance: 5, time: Date(), competitors: 2)
-    }
-}
-
-struct RaceView_Previews: PreviewProvider {
-    static var previews: some View {
-        RaceView()
+        VStack{
+            ScrollView{
+                ForEach(RaceVM.raceList){ race in
+                    RaceCard(raceVM: RaceVM, race: race)
+                }
+            }.onAppear(){
+                RaceVM.SetRaceList()
+                print("Race list count is \(RaceVM.raceList.count)")
+            }
+            Button("Solo"){
+                
+            }
+        }
+        
     }
 }

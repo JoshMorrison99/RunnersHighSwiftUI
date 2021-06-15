@@ -11,5 +11,6 @@ enum FBKeys{
     
     enum FBCollections {
         static let users = "users"
+        static let races = "races"
     }
 }

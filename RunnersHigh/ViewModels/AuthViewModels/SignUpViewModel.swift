@@ -31,8 +31,6 @@ class SignUpViewModel: ObservableObject{
         print(email)
         print(password)
         
-        let newUser = UserModel(username: username, email: email)
-        
         if(!ValidationChecker.isUsernameValid(username: username)){
             usernameError = "Must be at least 6 characters."
         }else{
@@ -54,7 +52,7 @@ class SignUpViewModel: ObservableObject{
         }
         
         if(usernameError == "" && emailError == "" && passwordError == ""){
-            AuthRepo.CreateUser(newUser, password: password) { (result) in
+            AuthRepo.CreateUser(username: username, email: email, password: password) { (result) in
                 switch result {
                     case .failure(let error):
                         guard let errCode = AuthErrorCode(rawValue: error._code) else {return}
@@ -67,7 +65,6 @@ class SignUpViewModel: ObservableObject{
                         print("error \(error.localizedDescription)")
                     case .success(_):
                         print("Account Created")
-                        print(newUser.id)
                 }
             }
         }

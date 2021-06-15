@@ -8,23 +8,25 @@
 import SwiftUI
 
 struct RaceCard: View {
-    let distance: Float
-    let time: Date
-    let competitors: Int
+    @ObservedObject var raceVM: RaceListViewModel
+    @EnvironmentObject var userVM: UserViewModel
+//    let raceID: String?
+//    let distance: Float
+//    let competitorAmount: Int
+//    let time: String
+    var race: RaceModel
     
     var body: some View {
         ZStack{
             HStack{
-                Text("\(distance)k")
-                    .bold()
+                Text("\(Int(race.distance))km")
                     .font(.title)
                 Spacer()
-                Text(TypeFormatter.FormatDateToTimeOfDayAsString(date: time))
-                    .bold()
+                Text(TypeFormatter.FormatDateToTimeOfDayAsString(date: race.time))
                     .font(.title)
                 Divider()
                 VStack{
-                    Text("\(competitors)")
+                    Text("\(race.competitorsAmount)")
                         .bold()
                         .font(.title)
                     Text("competitors")
@@ -32,13 +34,10 @@ struct RaceCard: View {
                 }
             }
         }.frame(height: 100)
-         .padding()
-        
+        .padding(.horizontal, 20)
+        .onTapGesture {
+            raceVM.RaceCardClicked(raceClicked: race, user: userVM.user)
+        }
     }
 }
 
-struct RaceCard_Previews: PreviewProvider {
-    static var previews: some View {
-        RaceCard()
-    }
-}

@@ -9,8 +9,11 @@ import Foundation
 import FirebaseFirestoreSwift
 
 struct RaceModel: Identifiable, Encodable, Decodable {
+    
     @DocumentID var id: String?
     let distance: Float
-    var competitors: Int = 0
+    var competitorsAmount: Int = 0
+    var competitors: [UserModel] = []
     let time: Date
+
 }
