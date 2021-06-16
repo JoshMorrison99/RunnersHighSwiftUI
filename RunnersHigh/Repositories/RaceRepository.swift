@@ -29,7 +29,7 @@ class RaceRepository {
         }
     }
     
-    func AddCompetitorToRace(user: UserModel, race: RaceModel, completion: @escaping (Result<String, Error>) -> Void){
+    func UpdateCompetitorRaceList(user: UserModel, race: RaceModel, completion: @escaping (Result<String, Error>) -> Void){
         print("AddCompetitorToRace")
         
         let ref: ()? = try? Firestore.firestore().collection(FBKeys.FBCollections.races).document(race.id!).setData(from: race)
@@ -44,6 +44,4 @@ class RaceRepository {
     func AddRace(race: RaceModel){
         try? Firestore.firestore().collection(FBKeys.FBCollections.races).document(race.id!).setData(from: race)
     }
-    
-    
 }

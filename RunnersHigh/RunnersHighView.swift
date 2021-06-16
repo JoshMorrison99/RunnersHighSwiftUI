@@ -33,7 +33,7 @@ struct RunnersHighView: View {
             }else if(RunVM.RunState == .running){
                 RunView(RunVM: RunVM)
             }else if(RunVM.RunState == .waitingForRace){
-                WaitingForRaceView(RaceVM: RaceVM)
+                WaitingForRaceView(RaceVM: RaceVM, RunVM: RunVM)
             }
             
         }else if(UserAuthState.isUserAuthenticated == .signedOut){

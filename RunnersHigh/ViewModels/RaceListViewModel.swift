@@ -12,8 +12,14 @@ import FirebaseAuth
 class RaceListViewModel: NSObject, ObservableObject {
     private var RaceRepo = RaceRepository()
     @Published var raceList: [RaceModel] = []
-    @Published var raceCountdownSeconds: Double = 0
+    @Published var raceCountdownSeconds: Int = 0
     @Published var raceCountdownTimer: Timer?
+    @Published var raceCountdownTimerDisplay: Timer?
+    
+    var currentRace: RaceModel?
+    
+    @Published var minutesCoundown: Int = 0
+    @Published var secondsCountdown: Int = 0
 
     func SetRaceList(){
         SetRaceList5k()
@@ -76,12 +82,13 @@ class RaceListViewModel: NSObject, ObservableObject {
                     }
                 }
                 raceList[i].competitors.append(user)
-                RaceRepo.AddCompetitorToRace(user: user, race: raceList[i]){ (result) in
+                RaceRepo.UpdateCompetitorRaceList(user: user, race: raceList[i]){ (result) in
                     switch result {
                     case .success(_):
                         print("Success")
                         runVM.RunState = .waitingForRace
                         self.InitializeWaitingForRaceToStart(race: raceClicked, runVM: runVM)
+                        self.currentRace = raceClicked
                     case .failure(_):
                         print("Failure")
                     }
@@ -95,7 +102,35 @@ class RaceListViewModel: NSObject, ObservableObject {
         raceCountdownTimer = Timer.init(fireAt: race.time, interval: 0, target: self, selector: #selector(runVM.StartRun), userInfo: nil, repeats: false)
         RunLoop.main.add(raceCountdownTimer!, forMode: RunLoop.Mode.common)
         let fireDate = raceCountdownTimer!.fireDate
-        raceCountdownSeconds = Date().timeIntervalSince(fireDate)
+        raceCountdownSeconds = Int(Date().timeIntervalSince(fireDate))
+        raceCountdownSeconds = abs(raceCountdownSeconds)
+        
+        raceCountdownTimerDisplay = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){ _ in
+            self.raceCountdownSeconds -= 1
+            (self.minutesCoundown, self.secondsCountdown) = TypeFormatter.secondsToMinutesSeconds(seconds: self.raceCountdownSeconds)
+        }
+    }
+    
+    func CancelRaceButtonPressed(user: inout UserModel){
+        raceCountdownTimer?.invalidate()
+        raceCountdownTimerDisplay?.invalidate()
+        var i = 0
+        for competitor in currentRace!.competitors {
+            if(competitor.id == user.id){
+                currentRace!.competitors.remove(at: i)
+            }
+            i += 1
+        }
+        
+        RaceRepo.UpdateCompetitorRaceList(user: user, race: currentRace!){ (result) in
+            switch result {
+                case .success(_):
+                    print("success removing user from race")
+                    self.currentRace = nil
+                case .failure(_):
+                    print("failed to remove user from race")
+                }
+        }
     }
     
     
