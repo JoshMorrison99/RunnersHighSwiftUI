@@ -40,6 +40,9 @@
 		E7EDB6F32674369100F6ED05 /* FBKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EDB6F22674369100F6ED05 /* FBKeys.swift */; };
 		E7EDB6F5267569B100F6ED05 /* AuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EDB6F4267569B100F6ED05 /* AuthTests.swift */; };
 		E7EDB6F726756A8D00F6ED05 /* MockAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EDB6F626756A8D00F6ED05 /* MockAuth.swift */; };
+		E7F3F65D267A637900ACBA01 /* UnitConverterPace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3F65C267A637900ACBA01 /* UnitConverterPace.swift */; };
+		E7F3F65F267A64BE00ACBA01 /* RunRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3F65E267A64BE00ACBA01 /* RunRepository.swift */; };
+		E7F3F661267A791100ACBA01 /* WaitingForRaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3F660267A791100ACBA01 /* WaitingForRaceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,9 @@
 		E7EDB6F22674369100F6ED05 /* FBKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBKeys.swift; sourceTree = "<group>"; };
 		E7EDB6F4267569B100F6ED05 /* AuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTests.swift; sourceTree = "<group>"; };
 		E7EDB6F626756A8D00F6ED05 /* MockAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuth.swift; sourceTree = "<group>"; };
+		E7F3F65C267A637900ACBA01 /* UnitConverterPace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverterPace.swift; sourceTree = "<group>"; };
+		E7F3F65E267A64BE00ACBA01 /* RunRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepository.swift; sourceTree = "<group>"; };
+		E7F3F660267A791100ACBA01 /* WaitingForRaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForRaceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,7 @@
 				E746DCEA2676C11300CCC34D /* RaceView.swift */,
 				E746DCEC2676C12800CCC34D /* ProfileView.swift */,
 				E77CF2A42679120000C6FEC5 /* RunView.swift */,
+				E7F3F660267A791100ACBA01 /* WaitingForRaceView.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -283,6 +290,7 @@
 			children = (
 				E7EDB6F02674358B00F6ED05 /* AuthRepository.swift */,
 				E746DCF82677B49F00CCC34D /* RaceRepository.swift */,
+				E7F3F65E267A64BE00ACBA01 /* RunRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -293,6 +301,7 @@
 				E7BA5F5D2674062B004A9F7C /* ValidationChecker.swift */,
 				E7EDB6F22674369100F6ED05 /* FBKeys.swift */,
 				E746DCF42676D56400CCC34D /* TypeFormatter.swift */,
+				E7F3F65C267A637900ACBA01 /* UnitConverterPace.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -556,11 +565,13 @@
 				E7BA5F562672A9E3004A9F7C /* RunnersHighView.swift in Sources */,
 				E774A798266FEFC8007434E2 /* LoginView.swift in Sources */,
 				E7C22C602676843400D66E66 /* HomeView.swift in Sources */,
+				E7F3F65D267A637900ACBA01 /* UnitConverterPace.swift in Sources */,
 				E774A7A4266FFEF7007434E2 /* SignUpViewModel.swift in Sources */,
 				E7EDB6F32674369100F6ED05 /* FBKeys.swift in Sources */,
 				E77CF2A52679120000C6FEC5 /* RunView.swift in Sources */,
 				E746DCFB2677B6AA00CCC34D /* RaceListViewModel.swift in Sources */,
 				E774A7A0266FFD30007434E2 /* LoginViewModel.swift in Sources */,
+				E7F3F65F267A64BE00ACBA01 /* RunRepository.swift in Sources */,
 				E77CF2A72679130D00C6FEC5 /* RunViewModel.swift in Sources */,
 				E774A7A2266FFEA6007434E2 /* SignUpView.swift in Sources */,
 				E746DCED2676C12800CCC34D /* ProfileView.swift in Sources */,
@@ -576,6 +587,7 @@
 				E746DCF12676CFDC00CCC34D /* RaceCard.swift in Sources */,
 				E746DCF92677B49F00CCC34D /* RaceRepository.swift in Sources */,
 				E774A7AC267277C1007434E2 /* UserModel.swift in Sources */,
+				E7F3F661267A791100ACBA01 /* WaitingForRaceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,8 +9,8 @@ import Foundation
 
 struct RunModel: Identifiable, Encodable, Decodable {
     var id: Int
-    var avgPace: Float
-    var distance: Float
-    var startTime: Date
-    var endTime: Date
+    var timeInSeconds: Int
+    var distanceInMeters: Float
+    var startTime: Date?
+    var endTime: Date?
 }

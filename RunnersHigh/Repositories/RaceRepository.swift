@@ -13,6 +13,7 @@ class RaceRepository {
     
     enum MyError: Error{
         case noDocument
+        case errorAddingCompetitor
     }
     
     func GetRace(RaceID: String?, completion: @escaping (Result<RaceModel, Error>) -> Void){
@@ -30,10 +31,14 @@ class RaceRepository {
     
     func AddCompetitorToRace(user: UserModel, race: RaceModel, completion: @escaping (Result<String, Error>) -> Void){
         print("AddCompetitorToRace")
-        print(user.id!)
-        print(race.id)
         
-        try? Firestore.firestore().collection(FBKeys.FBCollections.races).document(race.id!).setData(from: race)
+        let ref: ()? = try? Firestore.firestore().collection(FBKeys.FBCollections.races).document(race.id!).setData(from: race)
+        print(ref)
+        if ref != nil {
+            completion(.success("Success"))
+        }else{
+            completion(.failure(MyError.errorAddingCompetitor))
+        }
     }
     
     func AddRace(race: RaceModel){

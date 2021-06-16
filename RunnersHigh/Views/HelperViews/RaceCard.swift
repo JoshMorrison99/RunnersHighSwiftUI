@@ -10,6 +10,7 @@ import SwiftUI
 struct RaceCard: View {
     @ObservedObject var raceVM: RaceListViewModel
     @EnvironmentObject var userVM: UserViewModel
+    @ObservedObject var runVM: RunViewModel
 //    let raceID: String?
 //    let distance: Float
 //    let competitorAmount: Int
@@ -26,7 +27,7 @@ struct RaceCard: View {
                     .font(.title)
                 Divider()
                 VStack{
-                    Text("\(race.competitorsAmount)")
+                    Text("\(race.competitors.count)")
                         .bold()
                         .font(.title)
                     Text("competitors")
@@ -36,7 +37,7 @@ struct RaceCard: View {
         }.frame(height: 100)
         .padding(.horizontal, 20)
         .onTapGesture {
-            raceVM.RaceCardClicked(raceClicked: race, user: userVM.user)
+            raceVM.RaceCardClicked(raceClicked: race, user: userVM.user, runVM: runVM)
         }
     }
 }

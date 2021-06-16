@@ -30,8 +30,10 @@ struct RunnersHighView: View {
                             Label("Profile", systemImage: "person")
                         }
                 }
-            }else{
+            }else if(RunVM.RunState == .running){
                 RunView(RunVM: RunVM)
+            }else if(RunVM.RunState == .waitingForRace){
+                WaitingForRaceView(RaceVM: RaceVM)
             }
             
         }else if(UserAuthState.isUserAuthenticated == .signedOut){
@@ -41,3 +43,5 @@ struct RunnersHighView: View {
         }
     }
 }
+
+

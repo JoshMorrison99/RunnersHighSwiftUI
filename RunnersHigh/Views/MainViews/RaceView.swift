@@ -14,7 +14,7 @@ struct RaceView: View {
         VStack{
             ScrollView{
                 ForEach(RaceVM.raceList){ race in
-                    RaceCard(raceVM: RaceVM, race: race)
+                    RaceCard(raceVM: RaceVM, runVM: RunVM, race: race)
                 }
             }.onAppear(){
                 RaceVM.SetRaceList()
@@ -24,6 +24,7 @@ struct RaceView: View {
             }
             Button("Solo Run"){
                 RunVM.RunState = .running
+                RunVM.StartRun()
             }
             .frame(width: 100, height: 100)
             .foregroundColor(Color.black)

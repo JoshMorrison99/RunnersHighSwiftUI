@@ -16,11 +16,14 @@ struct RunnersHighApp: App {
     }
     
     var UserAuthState = UserViewModel()
-    var RaceVM = RaceListViewModel()
     var RunVM = RunViewModel()
+    var RaceVM = RaceListViewModel()
     var body: some Scene {
         WindowGroup {
-            RunnersHighView(RunVM: RunVM, RaceVM: RaceVM).environmentObject(UserAuthState).onAppear(){UserAuthState.configureFirebaseStateDidChange()}
+            RunnersHighView(RunVM: RunVM, RaceVM: RaceVM).environmentObject(UserAuthState).onAppear(){
+                UserAuthState.configureFirebaseStateDidChange()
+                RunVM.locationManagerObject.requestWhenInUseAuthorization()
+            }
         }
     }
 }

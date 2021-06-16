@@ -12,7 +12,6 @@ struct RaceModel: Identifiable, Encodable, Decodable {
     
     @DocumentID var id: String?
     let distance: Float
-    var competitorsAmount: Int = 0
     var competitors: [UserModel] = []
     let time: Date
 
