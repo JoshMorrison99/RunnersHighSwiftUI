@@ -13,4 +13,5 @@ struct RunModel: Identifiable, Encodable, Decodable {
     var distanceInMeters: Float
     var startTime: Date?
     var endTime: Date?
+    var distanceTimes: [Int] = [] // each index is the time per kilometer
 }

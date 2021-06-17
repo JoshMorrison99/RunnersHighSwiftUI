@@ -18,8 +18,13 @@ class RunViewModel: NSObject, ObservableObject {
     private var locationList: [CLLocation] = []
     @Published var distance = Measurement(value: 0, unit: UnitLength.meters)
     private var timer: Timer?
+    @Published var place: Int = 1
+    private var distanceIncrementer: Int = 0
+    var previousSeconds:Int = 0
     
     @Published var currentRun = RunModel(id: 0, timeInSeconds: 0, distanceInMeters: 0)
+    
+    var currentUser:UserModel?
     
     @objc func StartRun(){
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){ _ in
@@ -33,6 +38,10 @@ class RunViewModel: NSObject, ObservableObject {
         currentRun.startTime = Date()
     }
     
+    func GetUserFromEnv(user: UserModel){
+        currentUser = user
+    }
+    
     func EndRun(){
         locationManagerObject.stopUpdatingLocation()
         timer?.invalidate()
@@ -43,6 +52,7 @@ class RunViewModel: NSObject, ObservableObject {
         currentRun.distanceInMeters = Float(distance.value)
         currentRun.endTime = Date()
         currentRun.timeInSeconds = secondsTimer
+        
         user.runs.append(currentRun)
         runRepo.SaveRun(user: user) { (result) in
             switch result{
@@ -55,10 +65,32 @@ class RunViewModel: NSObject, ObservableObject {
         }
     }
     
-    
-    
     func eachSecond(){
         self.secondsTimer += 1
+        if(Int(Int(floor(self.distance.value)) / 1000) == distanceIncrementer+1 && self.distance.value != 0){
+            eachKilometer()
+        }
+    }
+    
+    func eachKilometer(){
+        print("KILOMETER!!!")
+        distanceIncrementer += 1
+        
+        // Add the time to the array of times and save
+//        if(distanceIncrementer == 1){
+//            currentUser!.runs.append(currentRun)
+//        }
+//
+//        currentUser!.runs[currentUser!.runs.count - 1].distanceTimes.append(secondsTimer - previousSeconds)
+//        runRepo.SaveRun(user: currentUser!) {(result) in
+//            switch result {
+//            case .success(_):
+//                print("Success saving kilometer milestone")
+//            case .failure(_):
+//                print("Failure saving kilometer milestone")
+//            }
+//        }
+//        previousSeconds = secondsTimer
     }
     
     enum RunStates {

@@ -20,6 +20,11 @@ struct RunView: View {
                         .font(.caption)
                 }
                 VStack{
+                    Text("\(RunVM.place)")
+                    Text("Place")
+                        .font(.caption)
+                }
+                VStack{
                     Text("\(RunVM.secondsTimer)")
                     Text("Time")
                         .font(.caption)
