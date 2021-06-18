@@ -99,7 +99,7 @@ class RaceListViewModel: NSObject, ObservableObject {
     }
     
     func InitializeWaitingForRaceToStart(race: RaceModel, runVM: RunViewModel){
-        raceCountdownTimer = Timer.init(fireAt: race.time, interval: 0, target: self, selector: #selector(runVM.StartRun), userInfo: nil, repeats: false)
+        raceCountdownTimer = Timer.init(fireAt: race.time, interval: 0, target: runVM, selector: #selector(runVM.StartRun), userInfo: nil, repeats: false)
         RunLoop.main.add(raceCountdownTimer!, forMode: RunLoop.Mode.common)
         let fireDate = raceCountdownTimer!.fireDate
         raceCountdownSeconds = Int(Date().timeIntervalSince(fireDate))
@@ -111,7 +111,9 @@ class RaceListViewModel: NSObject, ObservableObject {
         }
     }
     
-    func CancelRaceButtonPressed(user: inout UserModel){
+    func CancelRaceButtonPressed(user: inout UserModel, run: RunViewModel){
+        run.currentRace = nil
+        
         raceCountdownTimer?.invalidate()
         raceCountdownTimerDisplay?.invalidate()
         var i = 0

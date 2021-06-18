@@ -22,7 +22,10 @@ class RunViewModel: NSObject, ObservableObject {
     private var distanceIncrementer: Int = 0
     var previousSeconds:Int = 0
     
+    var currentRace: RaceModel?
+    
     @Published var currentRun = RunModel(id: 0, timeInSeconds: 0, distanceInMeters: 0)
+    @Published var RunState: RunStates = .notRunning
     
     var currentUser:UserModel?
     
@@ -36,10 +39,15 @@ class RunViewModel: NSObject, ObservableObject {
         locationManagerObject.distanceFilter = 10
         
         currentRun.startTime = Date()
+        currentUser?.runs.append(currentRun)
     }
     
-    func GetUserFromEnv(user: UserModel){
+    func GetUserFromEnv(user: inout UserModel){
         currentUser = user
+    }
+    
+    func GetRaceFromEnv(race: RaceModel){
+        currentRace = race
     }
     
     func EndRun(){
@@ -47,14 +55,14 @@ class RunViewModel: NSObject, ObservableObject {
         timer?.invalidate()
     }
     
-    func SaveRun(user: inout UserModel){
-        currentRun.id = user.runs.count + 1
-        currentRun.distanceInMeters = Float(distance.value)
-        currentRun.endTime = Date()
-        currentRun.timeInSeconds = secondsTimer
+    func SaveRun(){
+        currentUser!.runs[currentUser!.runs.count - 1].id = currentUser!.runs.count
+        currentUser!.runs[currentUser!.runs.count - 1].distanceInMeters = Float(distance.value)
+        currentUser!.runs[currentUser!.runs.count - 1].endTime = Date()
+        currentUser!.runs[currentUser!.runs.count - 1].timeInSeconds = secondsTimer
+        currentUser!.runs[currentUser!.runs.count - 1].distanceTimes.append(secondsTimer - previousSeconds)
         
-        user.runs.append(currentRun)
-        runRepo.SaveRun(user: user) { (result) in
+        runRepo.SaveRun(user: currentUser!) { (result) in
             switch result{
             case .success(_):
                 print("success saving run")
@@ -77,20 +85,22 @@ class RunViewModel: NSObject, ObservableObject {
         distanceIncrementer += 1
         
         // Add the time to the array of times and save
-//        if(distanceIncrementer == 1){
-//            currentUser!.runs.append(currentRun)
-//        }
-//
-//        currentUser!.runs[currentUser!.runs.count - 1].distanceTimes.append(secondsTimer - previousSeconds)
-//        runRepo.SaveRun(user: currentUser!) {(result) in
-//            switch result {
-//            case .success(_):
-//                print("Success saving kilometer milestone")
-//            case .failure(_):
-//                print("Failure saving kilometer milestone")
-//            }
-//        }
-//        previousSeconds = secondsTimer
+        currentUser!.runs[currentUser!.runs.count - 1].distanceTimes.append(secondsTimer - previousSeconds)
+        runRepo.SaveRun(user: currentUser!) {(result) in
+            switch result {
+            case .success(_):
+                print("Success saving kilometer milestone")
+            case .failure(_):
+                print("Failure saving kilometer milestone")
+            }
+        }
+        previousSeconds = secondsTimer
+        
+        CalculateRacePlacement()
+    }
+    
+    func CalculateRacePlacement(){
+        currentRace!.competitors.sort{ $0.runs[$0.runs.count - 1].distanceTimes.count > $1.runs[$1.runs.count - 1].distanceTimes.count}
     }
     
     enum RunStates {
@@ -99,7 +109,7 @@ class RunViewModel: NSObject, ObservableObject {
         case waitingForRace
     }
     
-    @Published var RunState: RunStates = .notRunning
+    
 }
 
 extension RunViewModel: CLLocationManagerDelegate {

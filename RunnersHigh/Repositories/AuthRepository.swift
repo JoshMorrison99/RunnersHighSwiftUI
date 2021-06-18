@@ -67,11 +67,15 @@ class AuthRepository: AuthRepositoryProtocol {
             if let document = document, document.exists {
                 print("Successfully got User")
                 let user = try? document.data(as: UserModel.self)
+                if user == nil{
+                    print(document.data())
+                    print("Can not find user with id \(uid!) or could not convert to usermodel")
+                }
                 completion(.success(user!))
             }else{
-                print("User id of \(uid) could not be found")
-                print("Error Occurred \(error?.localizedDescription)")
-                completion(.failure(error as! Error))
+                print("User id of \(String(describing: uid)) could not be found")
+                print("Error Occurred \(String(describing: error?.localizedDescription))")
+                completion(.failure(error!))
             }
         }
     }

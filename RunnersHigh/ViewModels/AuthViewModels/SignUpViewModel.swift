@@ -51,6 +51,7 @@ class SignUpViewModel: ObservableObject{
             passwordError = ""
         }
         
+        
         if(usernameError == "" && emailError == "" && passwordError == ""){
             AuthRepo.CreateUser(username: username, email: email, password: password) { (result) in
                 switch result {

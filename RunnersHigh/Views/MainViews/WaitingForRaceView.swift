@@ -20,7 +20,7 @@ struct WaitingForRaceView: View {
                 .font(.largeTitle)
             Button("Cancel"){
                 RunVM.RunState = .notRunning
-                RaceVM.CancelRaceButtonPressed(user: &userVM.user)
+                RaceVM.CancelRaceButtonPressed(user: &userVM.user, run: RunVM)
             }
         }
     }

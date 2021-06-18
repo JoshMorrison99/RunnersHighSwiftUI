@@ -38,7 +38,7 @@ struct RunView: View {
             Button("End"){
                 RunVM.RunState = .notRunning
                 RunVM.EndRun()
-                RunVM.SaveRun(user: &UserVM.user)
+                RunVM.SaveRun()
             }.frame(width: 100, height: 100)
             .foregroundColor(Color.black)
             .background(Color.red)

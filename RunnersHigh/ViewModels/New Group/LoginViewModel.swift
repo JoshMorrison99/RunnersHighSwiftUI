@@ -19,5 +19,14 @@ class LoginViewModel: ObservableObject{
     func Login(email: String, password: String){
         print(email)
         print(password)
+        
+        Auth.auth().signIn(withEmail: email, password: password){ (result, error)  in
+            if let error = error {
+                print(error)
+            }
+            print(result)
+        }
     }
+    
+    
 }
