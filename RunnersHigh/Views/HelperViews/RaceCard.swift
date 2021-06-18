@@ -38,7 +38,7 @@ struct RaceCard: View {
         .padding(.horizontal, 20)
         .onTapGesture {
             raceVM.RaceCardClicked(raceClicked: race, user: userVM.user, runVM: runVM)
-            runVM.GetRaceFromEnv(race: race)
+            runVM.GetRaceFromEnv(race: race, user: &userVM.user)
         }
     }
 }

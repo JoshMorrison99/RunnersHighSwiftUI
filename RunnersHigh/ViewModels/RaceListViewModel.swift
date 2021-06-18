@@ -105,6 +105,7 @@ class RaceListViewModel: NSObject, ObservableObject {
         raceCountdownSeconds = Int(Date().timeIntervalSince(fireDate))
         raceCountdownSeconds = abs(raceCountdownSeconds)
         
+        (self.minutesCoundown, self.secondsCountdown) = TypeFormatter.secondsToMinutesSeconds(seconds: self.raceCountdownSeconds)
         raceCountdownTimerDisplay = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){ _ in
             self.raceCountdownSeconds -= 1
             (self.minutesCoundown, self.secondsCountdown) = TypeFormatter.secondsToMinutesSeconds(seconds: self.raceCountdownSeconds)

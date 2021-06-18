@@ -30,6 +30,8 @@ class RunViewModel: NSObject, ObservableObject {
     var currentUser:UserModel?
     
     @objc func StartRun(){
+        RunState = .running
+        
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){ _ in
             self.eachSecond()
         }
@@ -46,8 +48,9 @@ class RunViewModel: NSObject, ObservableObject {
         currentUser = user
     }
     
-    func GetRaceFromEnv(race: RaceModel){
+    func GetRaceFromEnv(race: RaceModel, user: inout UserModel){
         currentRace = race
+        currentUser = user
     }
     
     func EndRun(){
@@ -96,7 +99,9 @@ class RunViewModel: NSObject, ObservableObject {
         }
         previousSeconds = secondsTimer
         
-        CalculateRacePlacement()
+        if(currentRace != nil){
+            CalculateRacePlacement()
+        }
     }
     
     func CalculateRacePlacement(){

@@ -26,7 +26,7 @@ class UserViewModel:ObservableObject{
     var authStateDidChangeListenerHandle: AuthStateDidChangeListenerHandle?
     
     func configureFirebaseStateDidChange(){
-        try? Auth.auth().signOut() //USE THIS DURING DEBUGGING TO LOG OUT USER
+        //try? Auth.auth().signOut() //USE THIS DURING DEBUGGING TO LOG OUT USER
         authStateDidChangeListenerHandle = Auth.auth().addStateDidChangeListener({ _, user in
             guard let user = user else {
                 self.isUserAuthenticated = .signedOut
