@@ -13,6 +13,7 @@ class RunViewModel: NSObject, ObservableObject {
     
     
     var runRepo = RunRepository()
+    var raceRepo = RaceRepository()
     @Published var secondsTimer: Int = 0
     let locationManagerObject = CLLocationManager()
     private var locationList: [CLLocation] = []
@@ -97,15 +98,45 @@ class RunViewModel: NSObject, ObservableObject {
                 print("Failure saving kilometer milestone")
             }
         }
-        previousSeconds = secondsTimer
         
         if(currentRace != nil){
             CalculateRacePlacement()
         }
+        
+        previousSeconds = secondsTimer
     }
     
     func CalculateRacePlacement(){
-        currentRace!.competitors.sort{ $0.runs[$0.runs.count - 1].distanceTimes.count > $1.runs[$1.runs.count - 1].distanceTimes.count}
+        
+        // GET UPDATED COMPETITORS
+        raceRepo.GetRace(RaceID: currentRace!.id){ (result) in
+            switch result {
+                case .success(let race):
+                    self.currentRace = race
+                    
+                    // UPDATE SINGLE COMPETITOR
+                    for i in 0..<(self.currentRace?.competitors.count)! {
+                        if((self.currentRace?.competitors[i].id)! == self.currentUser!.id){
+                            self.currentRace?.competitors[i] = self.currentUser!
+                        }
+                    }
+                    
+                    // SORT UPDATED COMPETITORS
+                    self.currentRace!.competitors.sort{ $0.runs[$0.runs.count - 1].distanceTimes.count > $1.runs[$1.runs.count - 1].distanceTimes.count}
+                    
+                    // UPDATE ALL COMPETITORS
+                    self.raceRepo.UpdateCompetitorRaceList(user: self.currentUser!, race: self.currentRace!){(result) in
+                        switch result {
+                        case .success(_):
+                            print("success updating competitors")
+                        case .failure(_):
+                            print("failure updating competitors")
+                        }
+                    }
+                case .failure(_):
+                    print("failure")
+            }
+        }
     }
     
     enum RunStates {

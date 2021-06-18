@@ -7,6 +7,7 @@ target 'RunnersHigh' do
 
   # Pods for RunnersHigh
   pod 'Firebase'
+  pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'

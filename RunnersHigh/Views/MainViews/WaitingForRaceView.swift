@@ -22,6 +22,9 @@ struct WaitingForRaceView: View {
                 RunVM.RunState = .notRunning
                 RaceVM.CancelRaceButtonPressed(user: &userVM.user, run: RunVM)
             }
+            Button("dev start race"){
+                RunVM.StartRun()
+            }
         }
     }
 }
